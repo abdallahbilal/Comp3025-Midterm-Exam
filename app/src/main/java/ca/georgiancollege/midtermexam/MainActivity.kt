@@ -3,6 +3,7 @@ package ca.georgiancollege.midtermexam
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.Switch
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import ca.georgiancollege.midtermexam.databinding.ActivityMainBinding
@@ -42,6 +43,8 @@ class MainActivity : AppCompatActivity() {
         var height = binding.editHeightText.text
         var BMI = binding.BMIAnswerTextView.text
         var Age = binding.editAgeText.text
+        var imperialHeight = binding.InchesTextView.text
+        var imperialWeight = binding.PoundsTextView.text
 
         fun calculateBMI(height: Int = 0, weight: Int = 0): Int {
             require(height > 0) { "Height must be greater than 0." }
@@ -52,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        SubmitButton.setOnClickListener{
+        SubmitButton.setOnClickListener {
 
             var height = binding.editHeightText.text
             var weight = binding.editWeightText.text
@@ -60,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        CancelButton.setOnClickListener{
+        CancelButton.setOnClickListener {
 
             Age.clear()
             height.clear()
@@ -68,17 +71,19 @@ class MainActivity : AppCompatActivity() {
             Name.clear()
         }
 
+        binding.switch2.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                imperialHeight = "Meters"
+                imperialWeight = "Kilograms"
+            } else {
+                // The switch isn't checked.
+            }
 
 
-
-
-
+        }
 
 
     }
-
-
-
 
 
 }
