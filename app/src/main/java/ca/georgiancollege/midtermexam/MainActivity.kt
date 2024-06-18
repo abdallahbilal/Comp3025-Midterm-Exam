@@ -19,8 +19,7 @@ import ca.georgiancollege.midtermexam.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -35,13 +34,46 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        createButtonReferences()
-}
+        val SubmitButton = binding.SumbitButton
+        val CancelButton = binding.CancelButton
 
-    private fun createButtonReferences(): Unit {
-        val twoButtons = arrayOf(
-            binding.SumbitButton, binding.CancelButton
-        )
+        var Name = binding.Line1.text
+        var weight = binding.editWeightText.text
+        var height = binding.editHeightText.text
+        var BMI = binding.BMIAnswerTextView.text
+        var Age = binding.editAgeText.text
+
+        fun calculateBMI(height: Int = 0, weight: Int = 0): Int {
+            require(height > 0) { "Height must be greater than 0." }
+            require(weight > 0) { "Weight must be greater than 0." }
+
+            var bmi = weight / (height * height)
+            return bmi
+        }
+
+
+        SubmitButton.setOnClickListener{
+
+            var height = binding.editHeightText.text
+            var weight = binding.editWeightText.text
+            //val bmi = calculateBMI(height, weight)
+
+        }
+
+        CancelButton.setOnClickListener{
+
+            Age.clear()
+            height.clear()
+            weight.clear()
+            Name.clear()
+        }
+
+
+
+
+
+
+
 
     }
 
@@ -49,8 +81,5 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
-
-
 }
+
