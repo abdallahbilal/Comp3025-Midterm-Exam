@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
         val SubmitButton = binding.SumbitButton
         val CancelButton = binding.CancelButton
 
@@ -45,6 +47,9 @@ class MainActivity : AppCompatActivity() {
         var Age = binding.editAgeText.text
         var imperialHeight = binding.InchesTextView.text
         var imperialWeight = binding.PoundsTextView.text
+
+
+        //bmi claculations are not working
 
         fun calculateBMI(height: Int = 0, weight: Int = 0): Int {
             require(height > 0) { "Height must be greater than 0." }
@@ -63,6 +68,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        //clear button works perfectly
         CancelButton.setOnClickListener {
 
             Age.clear()
@@ -71,6 +77,7 @@ class MainActivity : AppCompatActivity() {
             Name.clear()
         }
 
+        //Swich code but doesnt work
         binding.switch2.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 imperialHeight = "Meters"
